@@ -1,11 +1,21 @@
-import { Button } from './components/ui/button'
+import { useQuery } from '@tanstack/react-query'
 
 export default function App() {
+	const getTodos = async () => {
+		const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+		return response.json()
+	}
+
+	// Queries
+	const query = useQuery({ queryKey: ['todos'], queryFn: getTodos })
+
 	return (
-		<section className='flex h-screen w-full items-center justify-center'>
-			<Button variant='default' className='px-10 py-2'>
-				Click me
-			</Button>
-		</section>
+		<div className='flex h-screen w-full items-center justify-center bg-gray-300'>
+			<ul className='text-black'>
+				{query.data?.map(({ name, id }: { name: string; id: number }) => (
+					<li key={id}>{name}</li>
+				))}
+			</ul>
+		</div>
 	)
 }
