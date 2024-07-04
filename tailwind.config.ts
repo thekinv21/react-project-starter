@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ['class'],
@@ -9,6 +11,26 @@ module.exports = {
 	],
 	prefix: '',
 	theme: {
+		screens: {
+			xs: '320px',
+			// => @media (min-width: 320px) { ... }
+
+			sm: '375px',
+			// => @media (min-width: 375px) { ... }
+
+			md: '480px',
+			// => @media (min-width: 480px) { ... }
+
+			lg: '834px',
+			// => @media (min-width: 834px) { ... }
+
+			xl: '1440px',
+			// => @media (min-width: 1440px) { ... }
+
+			'2xl': '1500px'
+			// => @media (min-width: 1500px) { ... }
+		},
+
 		container: {
 			center: true,
 			padding: '2rem',
@@ -73,5 +95,60 @@ module.exports = {
 			}
 		}
 	},
-	plugins: [require('tailwindcss-animate')]
+	plugins: [
+		require('tailwindcss-animate'),
+		plugin(function ({ addUtilities }) {
+			addUtilities({
+				'.custom-flex-col': {
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'center',
+					alignItems: 'center'
+				},
+
+				'.custom-flex-center': {
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center'
+				},
+				'.custom-flex-start': {
+					display: 'flex',
+					justifyContent: 'flex-start',
+					alignItems: 'flex-start'
+				},
+				'.custom-flex-end': {
+					display: 'flex',
+					justifyContent: 'flex-end',
+					alignItems: 'flex-end'
+				},
+				'.custom-flex-between': {
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center'
+				},
+				'.custom-flex-around': {
+					display: 'flex',
+					justifyContent: 'space-around',
+					alignItems: 'center'
+				},
+				'.custom-flex-evenly': {
+					display: 'flex',
+					justifyContent: 'space-evenly',
+					alignItems: 'center'
+				},
+
+				'.custom-flex-row': {
+					display: 'flex',
+					flexDirection: 'row',
+					justifyContent: 'center',
+					alignItems: 'center'
+				},
+
+				'.custom-full-screen': {
+					width: '100%',
+					height: '100%'
+				}
+			})
+		})
+	]
 }
