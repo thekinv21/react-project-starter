@@ -12,6 +12,8 @@
   "dependencies": {
     "@types/js-cookie": "^3.0.6",
     "axios": "^1.7.2",
+    "framer-motion": "^11.2.12",
+    "gsap": "^3.12.5",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.400.0",
     "react": "^18.3.1",
