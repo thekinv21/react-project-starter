@@ -11,11 +11,7 @@ export default function App() {
 
 	return (
 		<div className='flex h-screen w-full items-center justify-center bg-gray-300'>
-			<ul className='text-black'>
-				{query.data?.map(({ name, id }: { name: string; id: number }) => (
-					<li key={id}>{name}</li>
-				))}
-			</ul>
+			<h1>Welcome to React Query</h1>
 		</div>
 	)
 }
